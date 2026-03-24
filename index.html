@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="纯静态网页游戏合集，包含愤怒的小鸟、雷霆战机、植物大战僵尸，无后端，可直接部署。"
+  >
+  <title>静态网页版游戏合集</title>
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23d6322d'/%3E%3Ccircle cx='43' cy='24' r='6' fill='white'/%3E%3Ccircle cx='44' cy='24' r='3' fill='%23111'/%3E%3Cpolygon points='11,31 3,27 3,35' fill='%23f8e16c'/%3E%3Crect x='25' y='4' width='6' height='12' rx='3' fill='%233c6d2d'/%3E%3C/svg%3E"
+  >
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="game-wrap">
+      <div class="web-badge" aria-label="项目说明">
+        <span class="web-badge__eyebrow">Static Web Build</span>
+        <strong>迷你游戏合集</strong>
+        <span>愤怒的小鸟 + 雷霆战机 + 植物大战僵尸</span>
+      </div>
+
+      <div class="web-tip" aria-label="操作提示">
+        当前是纯静态网页版。快捷键：<kbd>R</kbd> 重开，<kbd>Esc</kbd> 菜单，<kbd>M</kbd> 静音。愤怒的小鸟用拖拽发射，雷霆/PVZ 可直接鼠标或键盘操作。
+      </div>
+
+      <canvas id="game-canvas" width="1280" height="720" aria-label="愤怒的小鸟游戏画布"></canvas>
+
+      <div class="canvas-btn-bar" aria-label="快捷操作">
+        <button id="menu-btn" class="canvas-btn" type="button">菜单</button>
+        <button id="retry-btn" class="canvas-btn" type="button">重开</button>
+        <button id="more-games-btn" class="canvas-btn" type="button">更多游戏</button>
+        <button id="shop-btn" class="canvas-btn shop" type="button">商店</button>
+        <button id="mute-btn" class="canvas-btn" type="button">静音</button>
+      </div>
+
+      <div id="overlay" class="overlay is-visible theme-angrybirds" role="dialog" aria-live="polite">
+        <div class="panel">
+          <h1 id="overlay-title">愤怒的小鸟 2</h1>
+          <p id="overlay-message">选择关卡后开始，拖动弹弓发射小鸟。</p>
+
+          <div id="level-grid" class="level-grid" aria-label="关卡列表"></div>
+          <div id="game-hub-container" class="game-hub-container" style="display:none"></div>
+          <div id="shop-container" class="shop-container" style="display:none"></div>
+          <div id="task-container" class="task-container" style="display:none"></div>
+
+          <div class="overlay-actions">
+            <button id="overlay-primary-btn" class="primary-btn" type="button">开始游戏</button>
+            <button id="overlay-secondary-btn" class="ghost-btn" type="button">继续游戏</button>
+            <button id="overlay-more-games-btn" class="ghost-btn" type="button">更多游戏</button>
+            <button
+              id="overlay-task-btn"
+              class="ghost-btn task-btn"
+              type="button"
+            >
+              任务
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="vendor/matter.min.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/entities/Bird.js"></script>
+  <script src="js/entities/Pig.js"></script>
+  <script src="js/entities/Block.js"></script>
+  <script src="js/entities/Tnt.js"></script>
+  <script src="js/entities/Slingshot.js"></script>
+  <script src="js/entities/Portal.js"></script>
+  <script src="js/systems/sound.js"></script>
+  <script src="js/systems/economy.js"></script>
+  <script src="js/systems/tasks.js"></script>
+  <script src="js/systems/stateMachine.js"></script>
+  <script src="js/systems/environmentHazards.js"></script>
+  <script src="js/systems/score.js"></script>
+  <script src="js/systems/collision.js"></script>
+  <script src="js/shared/profileStore.js"></script>
+  <script src="js/shared/rewardSystem.js"></script>
+  <script src="js/shared/metaProgression.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/games/thunder/levels.js"></script>
+  <script src="js/games/thunder/thunderGame.js"></script>
+  <script src="js/games/pvz/levels.js"></script>
+  <script src="js/games/pvz/assets.js"></script>
+  <script src="js/games/pvz/pvzGame.js"></script>
+  <script src="js/hub/gameHub.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
